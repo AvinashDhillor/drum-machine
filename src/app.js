@@ -164,7 +164,12 @@ class KeyPad extends React.Component {
           id={this.props.keyTrigger}
           src={this.props.clip}
         />
-        {this.props.keyTrigger}
+        <button
+          className="btn btn-primary btn-lg m-1"
+          style={{ width: '90px' }}
+        >
+          {this.props.keyTrigger}
+        </button>
       </div>
     );
   }
@@ -177,6 +182,7 @@ class Pad extends React.Component {
 
   render() {
     let padBank;
+
     this.props.power
       ? (padBank = this.props.currentBank.map(e => {
           return (
@@ -200,7 +206,11 @@ class Pad extends React.Component {
           );
         }));
 
-    return <div>{padBank}</div>;
+    return (
+      <div className="mt-3 d-flex flex-wrap" style={{ width: '300px' }}>
+        {padBank}
+      </div>
+    );
   }
 }
 
@@ -257,17 +267,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>{this.state.displayText}</p>
-        <button onClick={this.changeBank}>ChangeBank</button>
-        <button onClick={this.changePower}>
-          {this.state.isPoweron ? 'off' : 'on'}
-        </button>
-        <Pad
-          currentBank={this.state.currentBank}
-          power={this.state.isPoweron}
-          updateDisplay={this.updateDisplay}
-        />
+      <div className="d-flex justify-content-center mt-5">
+        <div>
+          <div
+            className="border border-secondry pl-4 py-2 my-2"
+            style={{ height: '57px', width: '300px' }}
+          >
+            <h2 className="text-muted">{this.state.displayText}</h2>
+          </div>
+
+          <div>
+            <button
+              className="btn btn-warning btn-lg"
+              onClick={this.changeBank}
+            >
+              ChangeBank
+            </button>
+            <button
+              className="btn btn-danger btn-lg ml-1"
+              onClick={this.changePower}
+            >
+              {this.state.isPoweron ? 'off' : 'on'}
+            </button>
+          </div>
+
+          <Pad
+            currentBank={this.state.currentBank}
+            power={this.state.isPoweron}
+            updateDisplay={this.updateDisplay}
+          />
+        </div>
       </div>
     );
   }
