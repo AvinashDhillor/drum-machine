@@ -158,18 +158,15 @@ class KeyPad extends React.Component {
 
   render() {
     return (
-      <div onClick={this.playSound}>
+      <div onClick={this.playSound} id={this.props.clipId} className="drum-pad">
         <audio
           className="clip"
           id={this.props.keyTrigger}
           src={this.props.clip}
         />
-        <button
-          className="btn btn-primary btn-lg m-1"
-          style={{ width: '90px' }}
-        >
+        <a className="btn btn-primary btn-lg m-1" style={{ width: '90px' }}>
           {this.props.keyTrigger}
-        </button>
+        </a>
       </div>
     );
   }
@@ -268,10 +265,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="d-flex justify-content-center mt-5">
-        <div>
+        <div id="drum-machine">
           <div
             className="border border-secondry pl-4 py-2 my-2"
             style={{ height: '57px', width: '300px' }}
+            id="display"
           >
             <h2 className="text-muted">{this.state.displayText}</h2>
           </div>
