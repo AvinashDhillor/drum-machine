@@ -160,7 +160,7 @@ class KeyPad extends React.Component {
     return (
       <div onClick={this.playSound}>
         <audio
-          className='clip'
+          className="clip"
           id={this.props.keyTrigger}
           src={this.props.clip}
         />
@@ -192,7 +192,7 @@ class Pad extends React.Component {
       : (padBank = this.props.currentBank.map(e => {
           return (
             <KeyPad
-              clip='#'
+              clip="#"
               keyCode={e.keyCode}
               keyTrigger={e.keyTrigger}
               updateDisplay={this.props.updateDisplay}
@@ -273,4 +273,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
